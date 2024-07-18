@@ -54,3 +54,14 @@ const addToFavorites = (movie) => {
     alert(`${movie.title} is already in your favorites!`);
   }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchMovies().then(displayMovies);
+
+  const searchForm = document.getElementById("searchForm");
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const searchInput = document.getElementById("searchInput").value;
+    fetchMovies(searchInput).then(displayMovies);
+  });
+});
