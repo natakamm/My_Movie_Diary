@@ -42,6 +42,9 @@ const displayMovies = (movies) => {
       addToFavorites(movie);
     });
   });
+
+  // Call initializeButtons after movies are displayed
+  initializeButtons();
 };
 
 const addToFavorites = (movie) => {
@@ -49,12 +52,32 @@ const addToFavorites = (movie) => {
   if (!favorites.some((fav) => fav.id === movie.id)) {
     favorites.push(movie);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert(`${movie.title} has been added to your favorites!`);
+    const button = document.querySelector(`[data-id="${movie.id}"]`);
+    button.classList.remove("bg-blue-500");
+    button.classList.add("bg-green-500");
+    button.textContent = "Added to Favorites";
   } else {
-    alert(`${movie.title} is already in your favorites!`);
+    const button = document.querySelector(`[data-id="${movie.id}"]`);
+    button.classList.remove("bg-blue-500");
+    button.classList.add("bg-gray-500");
+    button.textContent = "Already in Favorites";
   }
 };
 
+const initializeButtons = () => {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  favorites.forEach((fav) => {
+    const button = document.querySelector(`[data-id="${fav.id}"]`);
+    if (button) {
+      button.classList.remove("bg-blue-500");
+      button.classList.add("bg-green-500");
+      button.textContent = "Added to Favorites";
+    }
+  });
+};
+
+// Initialize page content when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   fetchMovies().then(displayMovies);
 
