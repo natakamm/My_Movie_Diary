@@ -3,8 +3,9 @@
   "source": "index.html",
   "version": "1.0.0",
   "scripts": {
-    "dev": "parcel",
-    "build": "parcel build"
+    "dev": "parcel index.html journal.html",
+    "build": "parcel build",
+    "clean": "rm -rf .parcel-cache rm -rf dist"
   },
   "keywords": [],
   "author": "",
