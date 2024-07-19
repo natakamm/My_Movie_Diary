@@ -20,7 +20,8 @@ const displayMovies = (movies) => {
   moviesList.innerHTML = ""; // Clear any existing movies
   movies.forEach((movie) => {
     const movieCard = document.createElement("div");
-    movieCard.className = "movie-card bg-white p-4 rounded shadow";
+    movieCard.className =
+      "movie-card bg-white p-4 rounded shadow border-primary border-2";
 
     movieCard.innerHTML = `
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="w-full h-auto mb-4">
