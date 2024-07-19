@@ -19,7 +19,7 @@ const retrieveData = () => {
         card.innerHTML = `
           <div>
             <h2 class="text-xl text-center font-bold mb-5">${entry.title}</h2>
-            <img src="${entry.poster_path}" alt="${entry.title}" class="h-48 mb-4 self-center"> 
+            <img src="https://image.tmdb.org/t/p/w500${entry.poster_path}" alt="${entry.title}" class="h-auto mb-4 self-center"> 
             <p class="text-black mb-4">${entry.overview}</p>
           </div>
           <button class="remove-btn bg-secondary text-white py-2 px-8 m-2 rounded-lg self-end transition-all duration-300 group-hover:bg-primary"
