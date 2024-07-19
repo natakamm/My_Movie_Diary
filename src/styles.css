@@ -17,13 +17,13 @@
   position: relative;
   background-color: white;
   padding: 1rem;
-  border-radius: 28px; /* Rounded corners */
-  overflow: hidden; /* Ensure content doesn't overflow the rounded corners */
-  color: #333; /* Text color for better contrast */
+  border-radius: 28px;
+  overflow: hidden;
+  color: #333;
   transition: transform 0.2s;
-  display: flex; /* Ensure movie card uses flexbox */
-  flex-direction: column; /* Arrange items vertically */
-  justify-content: space-between; /* Space evenly within the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-card::before {
@@ -33,13 +33,13 @@
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border: 1px solid #e31059; /* Border color */
-  border-radius: inherit; /* Match the card's border radius */
-  pointer-events: none; /* Ensure the border doesn't interfere with user interactions */
+  border: 1px solid #e31059;
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 .movie-card img {
-  border-radius: 28px; /* Match the card's rounded corners */
+  border-radius: 28px;
   max-width: 100%;
   height: auto;
 }
@@ -62,5 +62,13 @@
 
 .add-to-favorites:hover {
   background-color: white;
-  color: #e31059;
+  color: #0f0f0f;
+}
+
+.bg-green-500 {
+  background-color: green;
+  border: green;
+}
+.bg-gray-500 {
+  background-color: gray;
 }

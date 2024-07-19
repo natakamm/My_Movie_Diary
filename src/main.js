@@ -17,7 +17,7 @@ const fetchMovies = async (query = "") => {
 
 const displayMovies = (movies) => {
   const moviesList = document.getElementById("moviesList");
-  moviesList.innerHTML = ""; // Clear any existing movies
+  moviesList.innerHTML = ""; //Clear any existing movies
   movies.forEach((movie) => {
     const movieCard = document.createElement("div");
     movieCard.className =
@@ -27,7 +27,7 @@ const displayMovies = (movies) => {
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="w-full h-auto mb-4">
       <h2 class="text-lg font-bold mb-2">${movie.title}</h2>
       <p class="text-gray-700 mb-2 flex-grow">${movie.overview}</p>
-      <button class="add-to-favorites bg-blue-500 text-white p-2 rounded mt-2" data-id="${movie.id}" data-title="${movie.title}" data-poster="${movie.poster_path}" data-overview="${movie.overview}">Add to Favorites</button>
+      <button class="add-to-favorites text-white p-2 rounded mt-2" data-id="${movie.id}" data-title="${movie.title}" data-poster="${movie.poster_path}" data-overview="${movie.overview}">Add to Favorites</button>
     `;
     moviesList.appendChild(movieCard);
   });
@@ -44,7 +44,7 @@ const displayMovies = (movies) => {
     });
   });
 
-  // Call initializeButtons after movies are displayed
+  //Call initializeButtons after movies are displayed
   initializeButtons();
 };
 
@@ -54,12 +54,10 @@ const addToFavorites = (movie) => {
     favorites.unshift(movie);
     localStorage.setItem("favorites", JSON.stringify(favorites));
     const button = document.querySelector(`[data-id="${movie.id}"]`);
-    button.classList.remove("bg-blue-500");
     button.classList.add("bg-green-500");
     button.textContent = "Added to Favorites";
   } else {
     const button = document.querySelector(`[data-id="${movie.id}"]`);
-    button.classList.remove("bg-blue-500");
     button.classList.add("bg-gray-500");
     button.textContent = "Already in Favorites";
   }
@@ -71,14 +69,13 @@ const initializeButtons = () => {
   favorites.forEach((fav) => {
     const button = document.querySelector(`[data-id="${fav.id}"]`);
     if (button) {
-      button.classList.remove("bg-blue-500");
       button.classList.add("bg-green-500");
       button.textContent = "Added to Favorites";
     }
   });
 };
 
-// Initialize page content when the DOM is fully loaded
+//Initialize page content when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   fetchMovies().then(displayMovies);
 
