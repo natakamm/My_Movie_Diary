@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel index.html journal.html",
     "build": "parcel build",
-    "clean": "rm -rf .parcel-cacherm -rf dist"
+    "clean": "rm -rf .parcel-cache rm -rf dist"
   },
   "keywords": [],
   "author": "",
