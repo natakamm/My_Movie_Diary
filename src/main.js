@@ -50,7 +50,7 @@ const displayMovies = (movies) => {
 const addToFavorites = (movie) => {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   if (!favorites.some((fav) => fav.id === movie.id)) {
-    favorites.push(movie);
+    favorites.unshift(movie);
     localStorage.setItem("favorites", JSON.stringify(favorites));
     const button = document.querySelector(`[data-id="${movie.id}"]`);
     button.classList.remove("bg-blue-500");
