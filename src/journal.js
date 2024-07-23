@@ -19,7 +19,7 @@ const displayJournalEntries = () => {
     //for eachLoop now contains the function for the creation of a card
     entries.forEach((entry, index) => {
       //for each method to go over each object in the array entries
-      createCard(entry, index);
+      const card = createCard(entry, index);
       container.appendChild(card);
     });
   }
@@ -49,6 +49,7 @@ const createCard = (entry, index) => {
         <button class="submit-btn text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br  dark:focus:ring-pink-800 rounded-lg py-2 px-8 m-2 ">Submit Note</button>
       </div>
     `;
+
   addEventListenersToButtons(card, index);
 
   return card;
