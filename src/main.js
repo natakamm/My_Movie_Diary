@@ -1,5 +1,5 @@
 const fetchMovies = async (query = "") => {
-  const apiKey = "b1c958ac86819ee420b882bfa3d992ba";
+  const apiKey = "560028d00962052a3fbda82355f3c7af";
   const url = query
     ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
     : `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
