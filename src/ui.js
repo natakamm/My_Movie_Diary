@@ -6,7 +6,7 @@ export const displayMovies = (movies, moviesList) => {
     moviesList.innerHTML = `<p class="text-red-500">No movies found.</p>`;
     return;
   }
-
+  //Fragment for Batch DOM Updates: When appending multiple elements, use DocumentFragment to avoid multiple reflows and repaints.
   const fragment = document.createDocumentFragment();
   movies.forEach((movie) => {
     const movieCard = document.createElement("div");
