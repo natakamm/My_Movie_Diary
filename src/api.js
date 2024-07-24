@@ -1,5 +1,5 @@
 export const fetchMovies = async (query = "") => {
-  const apiKey = "560028d00962052a3fbda82355f3c7af";
+  const apiKey = config.TMDB_API_KEY;
   const url = query
     ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
     : `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
