@@ -1,3 +1,4 @@
+//COMMON
 //before this function was wrapped around the whole code
 const retrieveData = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -5,26 +6,34 @@ const retrieveData = () => {
   });
 };
 
+//UI or COMMON
 //this function is now significantly smaller
 //declared function in variable const
 //includes the creation of a card function, which includes the adding event listeners function
 const displayJournalEntries = () => {
-  const dataInStorage = localStorage.getItem("favorites"); //get data from local storage
-  if (dataInStorage) {
-    const entries = JSON.parse(dataInStorage); //parse to array from string
-    const container = document.getElementById("container"); //grab container by id
+  const entries = getFavorites(); //entries is the data retrieved and parsed to array from string in getFavotires function
+  const container = document.getElementById("container"); //grab container by id
 
-    container.innerHTML = ""; //empty existing HTML
+  container.innerHTML = ""; //empty existing HTML
 
-    //for eachLoop now contains the function for the creation of a card
-    entries.forEach((entry, index) => {
-      //for each method to go over each object in the array entries
-      const card = createCard(entry, index);
-      container.appendChild(card);
-    });
-  }
+  //for eachLoop now contains the function for the creation of a card
+  entries.forEach((entry, index) => {
+    //for each method to go over each object in the array entries
+    const card = createCard(entry, index);
+    container.appendChild(card);
+  });
 };
 
+//STORAGE
+//before it was incooperated in displayJournalEntries
+//function that retrieves array from localstorage or returns an empty array if there are no data
+//It parses the retrieved string data into a JavaScript array using JSON.parse
+const getFavorites = () => {
+  const dataInStorage = localStorage.getItem("favorites");
+  return dataInStorage ? JSON.parse(dataInStorage) : [];
+};
+
+//UI
 //variable with function declaration for creating a card. before it was in the forEach
 //entry: Provides the data to populate the card
 //index: Provides a unique identifier for each card, allowing event listeners to perform actions on the correct data entries
@@ -55,6 +64,7 @@ const createCard = (entry, index) => {
   return card;
 };
 
+//UI
 //put all event listeners for buttons in one function declared in a variable called addEventListenersToButtons
 const addEventListenersToButtons = (card, index) => {
   eventListenerForSubmit(card, index);
@@ -62,6 +72,7 @@ const addEventListenersToButtons = (card, index) => {
   eventListenerToggleNote(card);
 };
 
+//UI
 //created a variable to declare a function for adding event listener to submit Button. Before it was not a function at all
 //eventListenerForSubmit(card, index): This function needs both the card element and the index because it updates the note for the specific entry at index in the local storage
 const eventListenerForSubmit = (card, index) => {
@@ -78,9 +89,10 @@ const eventListenerForSubmit = (card, index) => {
   });
 };
 
-//declared function in const variable instead of normal function
+//STORAGE
+//declared function in const variable instead of normal function STORAGE
 const storeNotes = (index, input) => {
-  const storedData = JSON.parse(localStorage.getItem("favorites")) || [];
+  const storedData = getFavorites();
   if (storedData[index]) {
     storedData[index].note = input; // Add new property 'note' with the input value
     localStorage.setItem("favorites", JSON.stringify(storedData));
@@ -88,6 +100,7 @@ const storeNotes = (index, input) => {
   }
 };
 
+//UI
 //declared function in a variable. Before it was not a function at all
 //eventListenerToggleNote(card): This function only needs the card element because it toggles the visibility of the note input field within the card. It does not need to know the index
 const eventListenerToggleNote = (card) => {
@@ -99,15 +112,15 @@ const eventListenerToggleNote = (card) => {
   });
 };
 
+//UI
 //declared function in a variable for the toggling of the input field
+//used ternary operator instead of if else statement
 const toggleField = (inputField) => {
-  if (inputField.style.display === "none") {
-    inputField.style.display = "flex";
-  } else {
-    inputField.style.display = "none";
-  }
+  inputField.style.display =
+    inputField.style.display === "none" ? "flex" : "none";
 };
 
+//UI
 //declared a function in a variable for the event listener of remove button
 //eventListenerRemoveButton(card, index): This function needs both the card element and the index because it removes the specific entry at index from the local storage
 const eventListenerRemoveButton = (card, index) => {
@@ -117,15 +130,14 @@ const eventListenerRemoveButton = (card, index) => {
   });
 };
 
-//created variable to declare function
+//STORAGE
+//created variable to declare function STORAGE
 const deleteItem = (index) => {
-  const dataInStorage = localStorage.getItem("favorites"); //get array in storage
-  if (dataInStorage) {
-    const entries = JSON.parse(dataInStorage); //parse it to array JS
-    entries.splice(index, 1); //use slice method to remove the index item, 1 stands for the continuation of slice
-    localStorage.setItem("favorites", JSON.stringify(entries)); //save new spliced array in srting form in the entries array in localstorage
-    displayJournalEntries(); //display the new localSTotage
-  }
+  //get array in storage
+  const entries = getFavorites(); //parse it to array JS
+  entries.splice(index, 1); //use slice method to remove the index item, 1 stands for the continuation of slice
+  localStorage.setItem("favorites", JSON.stringify(entries)); //save new spliced array in srting form in the entries array in localstorage
+  displayJournalEntries(); //display the new localSTotage
 };
 
 retrieveData();
