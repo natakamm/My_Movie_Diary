@@ -17,12 +17,12 @@ const fetchMovies = async (query = "") => {
 
 const displayMovies = (movies) => {
   const moviesList = document.getElementById("moviesList");
-  moviesList.innerHTML = ""; //Clear any existing movies
+  moviesList.innerHTML = "";
   movies.forEach((movie) => {
+    console.log(movie);
     const movieCard = document.createElement("div");
     movieCard.className =
       "movie-card bg-white p-4 rounded shadow border-primary border-2";
-
     movieCard.innerHTML = `
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="w-full h-auto mb-4">
       <h2 class="text-lg font-bold mb-2">${movie.title}</h2>
@@ -44,28 +44,26 @@ const displayMovies = (movies) => {
     });
   });
 
-  //Call initializeButtons after movies are displayed
   initializeButtons();
 };
 
 const addToFavorites = (movie) => {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  if (!favorites.some((fav) => fav.id === movie.id)) {
+  if (favorites.some((fav) => fav.id === movie.id)) {
+    const button = document.querySelector(`[data-id="${movie.id}"]`);
+    button.classList.add("bg-gray-500");
+    button.textContent = "Already in Favorites";
+  } else {
     favorites.unshift(movie);
     localStorage.setItem("favorites", JSON.stringify(favorites));
     const button = document.querySelector(`[data-id="${movie.id}"]`);
     button.classList.add("bg-green-500");
     button.textContent = "Added to Favorites";
-  } else {
-    const button = document.querySelector(`[data-id="${movie.id}"]`);
-    button.classList.add("bg-gray-500");
-    button.textContent = "Already in Favorites";
   }
 };
 
 const initializeButtons = () => {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
   favorites.forEach((fav) => {
     const button = document.querySelector(`[data-id="${fav.id}"]`);
     if (button) {
@@ -75,7 +73,6 @@ const initializeButtons = () => {
   });
 };
 
-//Initialize page content when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   fetchMovies().then(displayMovies);
 
