@@ -1,96 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Favorite Movies</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./src/styles.css" />
-  <script type="module" src="src/journal.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: "#E31059",
-            secondary: "#F6744B",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite Movies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script type="module" src="src/journal.js"></script>
+    <script src="config.js" defer></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#E31059",
+              secondary: "#F6744B",
+            },
           },
         },
-      },
-    };
-  </script>
-</head>
+      };
+    </script>
+  </head>
 
-<body class="bg-gray-100 font-inter">
-  <header class="bg-gradient-primary-secondary text-white p-4 mb-4">
-    <!-- eart logo: -->
-    <div class="absolute top-0 left-0 p-2">
-      <img src="./src/images/Logo White.png" alt="Heart Logo" class="h-8" />
-    </div>
-    <!-- Added header text: -->
-    <div class="backdrop-container mx-auto p-4 flex justify-between items-center">
-      <div class="title backdrop-wrapper -loaded">
-        <h2 class="w-full m-0 py-3 text-4xl">Welcome.</h2>
-        <h3 class="text-xl font-medium">
-          Millions of movies, TV shows and people to discover. Explore now.
-        </h3>
+  <body class="bg-gray-100 font-inter">
+    <header class="bg-gradient-primary-secondary text-white p-4 mb-4">
+      <!-- eart logo: -->
+      <div class="absolute top-0 left-0 p-2">
+        <img src="./src/images/Logo White.png" alt="Heart Logo" class="h-8" />
       </div>
-      <!-- Navbar: -->
-      <div>
-        <nav class="space-x-4">
-          <a href="index.html" class="text-white font-extra-bold hover:text-gray-900">Home</a>
-          <a href="journal.html" class="text-white font-extra-bold hover:text-gray-900">Journal</a>
-        </nav>
+      <!-- Added header text: -->
+      <div
+        class="backdrop-container mx-auto p-4 flex justify-between items-center"
+      >
+        <div class="title backdrop-wrapper -loaded">
+          <h2 class="w-full m-0 py-3 text-4xl">Welcome.</h2>
+          <h3 class="text-xl font-medium">
+            Millions of movies, TV shows and people to discover. Explore now.
+          </h3>
+        </div>
+        <!-- Navbar: -->
+        <div>
+          <nav class="space-x-4">
+            <a
+              href="index.html"
+              class="text-white font-extra-bold hover:text-gray-900"
+              >Home</a
+            >
+            <a
+              href="journal.html"
+              class="text-white font-extra-bold hover:text-gray-900"
+              >Journal</a
+            >
+          </nav>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <section class="my-12">
-    <div class="flex flex-col sm:flex-row items-center gap-4 sm:ml-10 mb-5">
-      <figure>
-        <img src="./src/images/Heart.png" alt="heart" class="h-9" />
-      </figure>
-      <h1 class="text-3xl font-semibold">Your favourites</h1>
-    </div>
-    <div class="mx-5 sm:ml-24 text-center sm:text-left">
-      <p>Check out all the movies you have previously liked</p>
-    </div>
-    <div id="container"
-      class="grid grid-cols-1 gap-12 mx-5 mt-16 mb-32 sm:gap-6 sm:mx-12 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-20">
-    </div>
-  </section>
+    <section class="my-12">
+      <div class="flex flex-col sm:flex-row items-center gap-4 sm:ml-10 mb-5">
+        <figure>
+          <img src="./src/images/Heart.png" alt="heart" class="h-9" />
+        </figure>
+        <h1 class="text-3xl font-semibold">Your favourites</h1>
+      </div>
+      <div class="mx-5 sm:ml-24 text-center sm:text-left">
+        <p>Check out all the movies you have previously liked</p>
+      </div>
+      <div
+        id="container"
+        class="grid grid-cols-1 gap-12 mx-5 mt-16 mb-32 sm:gap-6 sm:mx-12 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 xl:grid-cols-4 2xl:mx-20"
+      ></div>
+    </section>
 
-  <footer class="bg-gradient-to-r" style="
+    <footer
+      class="bg-gradient-to-r"
+      style="
         background-image: linear-gradient(90deg, #e31059, #f6744b, #e31059);
         width: 100%;
-      ">
-    <div class="flex justify-center sm:justify-start gap-20 p-8 pb-20 flex-wrap">
-      <figure>
-        <img src="./src/images/Logo White.png" class="h-14" alt="logo" />
-      </figure>
-      <ul class="text-white text-center sm:text-left">
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Back to the Top</a></li>
-        <li><a href="#">Home</a></li>
-      </ul>
-      <div class="flex gap-3">
+      "
+    >
+      <div
+        class="flex justify-center sm:justify-start gap-20 p-8 pb-20 flex-wrap"
+      >
         <figure>
-          <img src="./src/images/Instagran.png" class="h-6" alt="Instagram" />
+          <img src="./src/images/Logo White.png" class="h-14" alt="logo" />
         </figure>
-        <figure>
-          <img src="./src/images/Facebook.png" class="h-6" alt="facebook" />
-        </figure>
-        <figure>
-          <img src="./src/images/Pinterest.png" class="h-6" alt="pinterest" />
-        </figure>
+        <ul class="text-white text-center sm:text-left">
+          <li><a href="#">Search</a></li>
+          <li><a href="#">Back to the Top</a></li>
+          <li><a href="#">Home</a></li>
+        </ul>
+        <div class="flex gap-3">
+          <figure>
+            <img src="./src/images/Instagran.png" class="h-6" alt="Instagram" />
+          </figure>
+          <figure>
+            <img src="./src/images/Facebook.png" class="h-6" alt="facebook" />
+          </figure>
+          <figure>
+            <img src="./src/images/Pinterest.png" class="h-6" alt="pinterest" />
+          </figure>
+        </div>
       </div>
-    </div>
-    <div class="text-center pb-5 text-sm text-white">
-      <p>@2024 - MovieJournal.com</p>
-    </div>
-  </footer>
-</body>
-
+      <div class="text-center pb-5 text-sm text-white">
+        <p>@2024 - MovieJournal.com</p>
+      </div>
+    </footer>
+  </body>
 </html>
