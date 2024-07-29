@@ -1,4 +1,4 @@
-//Implies functions and methods that are commonly used across different parts of the application.
+// src/api/common.js
 export const BUTTON_STYLES = {
   addedToFavorites: "bg-green-500",
   alreadyAdded: "bg-gray-500",

@@ -1,14 +1,15 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
-  content: ["*.html", "./src/**/*.{html,js}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
       colors: {
-        primary: "#E31059",
-        secondary: "#F6744B",
+        primary: "#e31059",
+        secondary: "#ff9a8b",
       },
-      fontFamily: {
-        inter: ["Inter", "sans-serif"],
+      backgroundImage: {
+        "gradient-primary-secondary":
+          "linear-gradient(to right, #e31059, #ff9a8b)",
       },
     },
   },
